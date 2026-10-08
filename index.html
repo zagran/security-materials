@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Технічний план лекції</title>
+<meta name="description" content="Детальний технічний план гостьової лекції з кібербезпеки для подання науковому керівнику на затвердження.">
+<meta name="theme-color" content="#f6f3ec">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b5771a'/%3E%3Cpath d='M9 8h11M9 13h14M9 18h14M9 23h8' stroke='%23fff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<!--
+  ДЕТАЛЬНИЙ ТЕХНІЧНИЙ ПЛАН ЛЕКЦІЇ  (для подання науковому керівнику)
+
+  Друк / PDF: Chrome, Ctrl/Cmd+P, поля «Стандартні» або «Немає»,
+  увімкни «Фонова графіка». Світла тема вмикається для друку автоматично.
+
+  GitHub Pages: поклади поруч з index.html. Відкриється за адресою .../plan.html
+-->
+<style>
+/* Document layout: single centered reading column, utilitarian and print-first.
+   Same type and accent as the slides, but light-first so it reads and prints clean. */
+:root {
+  color-scheme: light;
+  --bg: #f4f1ea;          /* warm paper */
+  --surface: #ffffff;
+  --surface-2: #ece6d9;   /* chips, rails */
+  --wash: #f6efe0;        /* callout fill */
+  --line: #ddd4c2;
+  --line-strong: #c6bba3;
+  --fg: #211f1a;
+  --muted: #6c6457;
+  --accent: #a96c12;      /* amber, darkened for contrast on paper */
+  --accent-bright: #c98418;
+  --good: #2e7d4f;
+  --good-bg: #e6f0e7;
+  --warn: #8a5a00;
+  --warn-bg: #f4e9d2;
+
+  --font-display: "Geologica", "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #12110f; --surface: #1a1815; --surface-2: #23201b; --wash: #221d15;
+    --line: #36312a; --line-strong: #4b443a;
+    --fg: #eee7db; --muted: #a69d8f;
+    --accent: #f0a93e; --accent-bright: #f6bd5f;
+    --good: #6bbf8a; --good-bg: #1c2a20;
+    --warn: #e0b250; --warn-bg: #2a2314;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #12110f; --surface: #1a1815; --surface-2: #23201b; --wash: #221d15;
+  --line: #36312a; --line-strong: #4b443a;
+  --fg: #eee7db; --muted: #a69d8f;
+  --accent: #f0a93e; --accent-bright: #f6bd5f;
+  --good: #6bbf8a; --good-bg: #1c2a20;
+  --warn: #e0b250; --warn-bg: #2a2314;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding-block: 3.2rem 4rem;
+  padding-inline: 24px;
+}
+
+a { color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { color: var(--accent-bright); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; letter-spacing: -0.02em; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.6rem;
+}
+
+/* ---------- document header ---------- */
+
+.doc-head { border-bottom: 2px solid var(--fg); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  margin: 0 0 1rem;
+}
+.doc-title { font-size: 2.15rem; font-weight: 700; line-height: 1.08; margin: 0 0 0.5rem; }
+.doc-sub { font-size: 1.08rem; color: var(--muted); margin: 0; max-width: 46ch; }
+
+.meta {
+  margin: 1.8rem 0 0;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 1.3rem;
+  font-size: 0.95rem;
+}
+.meta dt { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); padding-top: 0.15rem; }
+.meta dd { margin: 0; }
+.fill { color: var(--muted); border-bottom: 1px dashed var(--line-strong); padding-bottom: 1px; }
+.status {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--warn);
+  background: var(--warn-bg);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+}
+
+/* ---------- sections ---------- */
+
+section { margin-top: 2.6rem; }
+.h2 { font-size: 1.4rem; font-weight: 600; margin: 0 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.7rem; }
+.h2 .num { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 500; color: var(--accent); }
+.lead { margin: 0 0 1.1rem; }
+
+.outcomes { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.7rem; counter-reset: oc; }
+.outcomes li { position: relative; padding-left: 2.4rem; }
+.outcomes li::before {
+  counter-increment: oc;
+  content: counter(oc);
+  position: absolute;
+  left: 0; top: 0.05rem;
+  width: 1.7rem; height: 1.7rem;
+  display: grid; place-items: center;
+  font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500;
+  color: var(--accent);
+  background: var(--surface-2);
+  border-radius: 50%;
+}
+
+/* ---------- agenda blocks ---------- */
+
+.block {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.2rem 1.3rem;
+  margin-bottom: 0.9rem;
+  break-inside: avoid;
+}
+.block-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  margin-bottom: 0.7rem;
+}
+.block-time {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.block-title { font-size: 1.12rem; font-weight: 600; margin: 0; flex: 1 1 14ch; min-width: 0; }
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.tag--dur { color: var(--fg); }
+.tag--who { color: var(--accent); border-color: var(--accent); }
+.tag--demo { color: var(--good); border-color: var(--good); background: var(--good-bg); }
+.block-body { font-size: 0.97rem; }
+.block-body ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.3rem; }
+.block-body li::marker { color: var(--accent); }
+.result {
+  margin-top: 0.7rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--line);
+  font-size: 0.9rem;
+}
+.result b { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-right: 0.5rem; }
+
+/* ---------- detail subsections ---------- */
+
+.detail { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 1.3rem 1.4rem; margin-top: 1rem; break-inside: avoid; }
+.detail h3 { font-size: 1.1rem; font-weight: 600; margin: 0 0 0.7rem; }
+.detail h4 { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 1rem 0 0.4rem; }
+.detail p { margin: 0 0 0.7rem; font-size: 0.97rem; }
+.detail ul { margin: 0 0 0.3rem; padding-left: 1.2rem; display: grid; gap: 0.3rem; font-size: 0.97rem; }
+.detail li::marker { color: var(--accent); }
+.ref { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+
+/* case table */
+.cases { display: grid; gap: 0.8rem; }
+.case { display: grid; grid-template-columns: 9rem 1fr; gap: 0.3rem 1.1rem; padding: 0.9rem 0; border-top: 1px solid var(--line); }
+.case:first-child { border-top: 0; padding-top: 0; }
+.case-name { font-weight: 600; }
+.case-name span { display: block; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 400; color: var(--muted); margin-top: 0.15rem; }
+.case-body { font-size: 0.95rem; }
+.case-body .lesson { color: var(--muted); }
+.case-body .lesson b { color: var(--fg); font-weight: 600; }
+
+/* callout */
+.callout {
+  background: var(--wash);
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 1.2rem 1.4rem;
+}
+.callout h3 { margin-top: 0; }
+.callout ul { display: grid; gap: 0.45rem; }
+
+/* two-column lists */
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem 2rem; }
+.cols ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; }
+.cols li::marker { color: var(--accent); }
+
+/* references */
+.reflist { margin: 0; padding: 0; list-style: none; counter-reset: rf; display: grid; gap: 0.55rem; font-size: 0.9rem; }
+.reflist li { position: relative; padding-left: 2.3rem; }
+.reflist li::before {
+  counter-increment: rf;
+  content: "[" counter(rf) "]";
+  position: absolute; left: 0; top: 0;
+  font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent);
+}
+.reflist a { word-break: break-word; }
+
+/* sign-off */
+.signoff { margin-top: 1rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 2rem; }
+.sign-field { display: grid; gap: 0.3rem; }
+.sign-line { border-bottom: 1px solid var(--fg); height: 2.2rem; }
+.sign-label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.decision { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 1.3rem; font-size: 0.95rem; }
+.decision label { display: inline-flex; align-items: center; gap: 0.5rem; }
+.box { width: 1.05rem; height: 1.05rem; border: 1.5px solid var(--fg); border-radius: 3px; display: inline-block; }
+
+.foot { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--line); font-size: 0.82rem; color: var(--muted); }
+
+/* theme toggle (screen only) */
+.toggle {
+  position: fixed;
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  right: 16px;
+  z-index: 5;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+}
+.toggle:hover { color: var(--fg); border-color: var(--line-strong); }
+
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .wrap { padding-block: 2.2rem 3rem; }
+  .doc-title { font-size: 1.7rem; }
+  .meta { grid-template-columns: 1fr; gap: 0.2rem; }
+  .meta dt { padding-top: 0.6rem; }
+  .cols, .signoff { grid-template-columns: 1fr; }
+  .case { grid-template-columns: 1fr; gap: 0.2rem; }
+  .case-name span { display: inline; margin-left: 0.4rem; }
+}
+
+@media print {
+  @page { margin: 18mm 16mm; }
+  :root { --bg: #fff; --surface: #fff; --wash: #f7f2e8; }
+  body { font-size: 11pt; }
+  .wrap { max-width: none; padding: 0; }
+  .toggle { display: none; }
+  a { color: inherit; text-decoration: none; }
+  .block, .detail, .callout, .case, section { break-inside: avoid; }
+  .h2 { break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<button class="toggle" id="toggle" type="button" aria-label="Перемкнути тему">тема</button>
+
+<div class="wrap">
+
+  <header class="doc-head">
+    <p class="kicker"><span>Подання на затвердження</span><span>Гостьова лекція</span><span>Кібербезпека</span></p>
+    <h1 class="doc-title">Хакери не зламують, а логіняться</h1>
+    <p class="doc-sub">Кібербезпека фінансових систем у хмарі. Детальний технічний план лекції.</p>
+
+    <dl class="meta">
+      <dt>Формат</dt><dd>Онлайн-лекція у Zoom з демонстрацією наживо. 60 хвилин, далі запитання.</dd>
+      <dt>Аудиторія</dt><dd>Рівень вище середнього. Підійде старшокурсникам, магістрам і практикам. Передбачається знання основ мереж, ОС і поняття IAM.</dd>
+      <dt>Спікери</dt><dd>Сергій Заграничний (Senior Software Engineer, хмарні системи AML). Юрій Журов (Founder, SMB Cybersecurity Advisors).</dd>
+    </dl>
+  </header>
+
+  <section>
+    <h2 class="h2"><span class="num">1</span>Мета і актуальність</h2>
+    <p class="lead">Фінансові установи переносять інфраструктуру в публічну хмару, тож периметр захисту визначають уже не стіни дата-центру, а ідентичність: ролі, токени, права доступу і люди. Переважна більшість гучних інцидентів останніх років почалася не зі злому коду, а з використання вкрадених або надлишкових облікових даних. Лекція показує цей зсув на трьох публічних кейсах, демонструє причинно-наслідковий ланцюг на навчальному стенді та його усунення, і завершується практичним чек-листом. Додатково коротко розкрито, куди зникають вкрадені кошти і як на це реагує комплаєнс (AML).</p>
+  </section>
+
+  <section>
+    <h2 class="h2"><span class="num">2</span>Навчальні результати</h2>
+    <p class="lead">Після лекції слухач зможе:</p>
+    <ol class="outcomes">
+      <li>Пояснити зсув периметра від мережі до ідентичності у хмарних фінансових системах і застосувати модель спільної відповідальності.</li>
+      <li>Розібрати реальні публічні інциденти та визначити спільну першопричину: компрометацію облікових даних, а не вразливість у коді.</li>
+      <li>Описати на концептуальному рівні ланцюг «SSRF, сервіс метаданих, тимчасові облікові дані ролі» і назвати конкретні засоби захисту: IMDSv2, найменші привілеї, policy-as-code.</li>
+      <li>Пояснити базові контролі AML (KYC, моніторинг транзакцій, санкційний скринінг, blockchain analytics) та їхню роль після інциденту.</li>
+      <li>Скласти персональний чек-лист захисту і назвати шляхи входу в хмарну безпеку як напрям кар'єри.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2 class="h2"><span class="num">3</span>Поблоковий план</h2>
+
+    <article class="block">
+      <div class="block-head">
+        <span class="block-time">00:00</span>
+        <h3 class="block-title">Знайомство і межі теми</h3>
+        <span class="tag tag--who">Обидва</span>
+        <span class="tag tag--dur">5 хв</span>
+      </div>
+      <div class="block-body">
+        <ul>
+          <li>Хто ми і чому ця тема. Коротко про досвід обох спікерів.</li>
+          <li>Хук: добовий лог домашнього сервера, скільки автоматичних спроб входу з інтернету (адреси знеособлені).</li>
+          <li>Дисклеймер: думки особисті, усі факти з публічних джерел, демо на ізольованому стенді.</li>
+        </ul>
+        <p class="result"><b>Результат</b>Задано рамку й етичні межі заняття.</p>
+      </div>
+    </article>
+
+    <article class="block">
+      <div class="block-head">
+        <span class="block-time">00:05</span>
+        <h3 class="block-title">Периметр переїхав у хмару</h3>
+        <span class="tag tag--who">Сергій</span>
+        <span class="tag tag--dur">10 хв</span>
+      </div>
+      <div class="block-body">
+        <ul>
+          <li>Банки в публічній хмарі. Публічний приклад: у 2020 Capital One закрив власні дата-центри і перейшов на AWS [1].</li>
+          <li>Модель спільної відповідальності: провайдер відповідає за безпеку хмари, клієнт за безпеку в хмарі.</li>
+          <li>Чому ідентичність (IAM, ролі, тимчасові токени) стає новим периметром.</li>
+        </ul>
+        <p class="result"><b>Результат</b>Слухач застосовує модель спільної відповідальності й бачить роль ідентичності.</p>
+      </div>
+    </article>
+
+    <article class="block">
+      <div class="block-head">
+        <span class="block-time">00:15</span>
+        <h3 class="block-title">Вхід замість злому: три кейси</h3>
+        <span class="tag tag--who">Юрій</span>
+        <span class="tag tag--dur">15 хв</span>
+      </div>
+      <div class="block-body">
+        <ul>
+          <li>Snowflake (2024): вхід за вкраденими паролями без MFA [2].</li>
+          <li>Arup (2024): дипфейк-відеодзвінок і соціальна інженерія [3].</li>
+          <li>Bybit (2025): компрометація робочого місця розробника і підміна фронтенду [4].</li>
+          <li>Спільний патерн і перехід до питання «як це відтворюється технічно».</li>
+        </ul>
+        <p class="result"><b>Результат</b>Слухач визначає спільну першопричину в різних за виглядом атаках.</p>
+      </div>
+    </article>
+
+    <article class="block">
+      <div class="block-head">
+        <span class="block-time">00:30</span>
+        <h3 class="block-title">Демонстрація: причина і захист</h3>
+        <span class="tag tag--who">Сергій</span>
+        <span class="tag tag--demo">наживо</span>
+        <span class="tag tag--dur">15 хв</span>
+      </div>
+      <div class="block-body">
+        <ul>
+          <li>Навчальний стенд CloudGoat в окремому тимчасовому AWS-акаунті [5].</li>
+          <li>Показ ланцюга на концептуальному рівні, далі його усунення (IMDSv2, найменші привілеї, policy-as-code).</li>
+          <li>Повторний запуск підтверджує, що шлях закрито. Деталі в розділі 4.</li>
+        </ul>
+        <p class="result"><b>Результат</b>Слухач бачить причину, наслідок і конкретне виправлення на одному прикладі.</p>
+      </div>
+    </article>
+
+    <article class="block">
+      <div class="block-head">
+        <span class="block-time">00:45</span>
+        <h3 class="block-title">Куди зникають гроші: AML</h3>
+        <span class="tag tag--who">Сергій</span>
+        <span class="tag tag--dur">10 хв</span>
+      </div>
+      <div class="block-body">
+        <ul>
+          <li>Як вкрадене проганяють через обмінники і кросчейн-мости (на прикладі публічних звітів про Bybit).</li>
+          <li>Контролі AML на рівні понять: KYC, моніторинг транзакцій, санкційний скринінг, blockchain analytics [6][7].</li>
+          <li>Де тут робота інженера: дані, якість сигналів, масштаб.</li>
+        </ul>
+        <p class="result"><b>Результат</b>Слухач називає базові контролі AML і їхнє місце після інциденту.</p>
+      </div>
+    </article>
+
+    <article class="block">
+      <div class="block-head">
+        <span class="block-time">00:55</span>
+        <h3 class="block-title">Що з цим робити</h3>
+        <span class="tag tag--who">Юрій</span>
+        <span class="tag tag--dur">5 хв</span>
+      </div>
+      <div class="block-body">
+        <ul>
+          <li>Чек-лист: passkeys або MFA, найменші привілеї, IMDSv2, policy-as-code, перевірка «термінових» запитів іншим каналом.</li>
+          <li>Перші кроки в хмарній безпеці: flaws.cloud [8], CloudGoat, сертифікації.</li>
+        </ul>
+        <p class="result"><b>Результат</b>Слухач має практичний чек-лист і точки входу в напрям.</p>
+      </div>
+    </article>
+
+    <article class="block">
+      <div class="block-head">
+        <span class="block-time">01:00</span>
+        <h3 class="block-title">Запитання і обговорення</h3>
+        <span class="tag tag--who">Обидва</span>
+        <span class="tag tag--dur">відкрито</span>
+      </div>
+      <div class="block-body">
+        <p style="margin:0">Відповіді на запитання. Внутрішні процеси роботодавців не коментуємо, говоримо на рівні індустрії та публічних джерел.</p>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <h2 class="h2"><span class="num">4</span>Деталізація демонстрації</h2>
+    <div class="detail">
+      <h3>Причинно-наслідковий ланцюг на навчальному стенді</h3>
+      <p>Демонстрація показує механізм на навмисно вразливому навчальному середовищі, а не атаку на реальну систему. Стенд розгортається з відкритого навчального проєкту CloudGoat (Rhino Security Labs) в окремому тимчасовому AWS-акаунті, ізольованому від будь-яких робочих систем, і повністю видаляється одразу після заняття.</p>
+
+      <h4>Що показуємо, концептуально</h4>
+      <ul>
+        <li>Як параметр у вебзастосунку можна змусити звернутися до внутрішньої адреси. Цей клас вразливостей зветься SSRF.</li>
+        <li>Як сервіс метаданих інстансу видає тимчасові облікові дані ролі.</li>
+        <li>Як надмірно широкі права ролі перетворюють цей доступ на доступ до даних у сховищі.</li>
+      </ul>
+
+      <h4>Головна частина: захист</h4>
+      <ul>
+        <li>IMDSv2, сесійний доступ до метаданих, закриває просту версію цього шляху.</li>
+        <li>Принцип найменших привілеїв обмежує масштаб можливих наслідків.</li>
+        <li>Policy-as-code (Cloud Custodian) автоматично вмикає IMDSv2 на всьому парку інстансів.</li>
+        <li>Повторний запуск показує, що той самий запит більше не спрацьовує.</li>
+      </ul>
+
+      <h4>Етичні межі</h4>
+      <p style="margin-bottom:0">Жодних реальних цілей. Облікові дані на екран не виводяться. Студентів не просять нічого атакувати, покрокові інструкції для повторення поза навчальним стендом не роздаються. Усі інструменти і сценарій відкриті та створені саме для навчання. <span class="ref">Джерело сценарію: [5].</span></p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="h2"><span class="num">5</span>Кейси: що саме розбираємо</h2>
+    <div class="detail">
+      <div class="cases">
+        <div class="case">
+          <div class="case-name">Snowflake<span>2024</span></div>
+          <div class="case-body">
+            <p style="margin:0 0 0.4rem">Доступ до хмарних акаунтів за обліковими даними, зібраними інфостілерами, там, де не було багатофакторної автентифікації. За даними Mandiant, кампанія торкнулася близько 165 організацій [2].</p>
+            <p class="lesson" style="margin:0"><b>Урок:</b> пароля без MFA недостатньо, обліковий запис це вже периметр.</p>
+          </div>
+        </div>
+        <div class="case">
+          <div class="case-name">Arup<span>2024</span></div>
+          <div class="case-body">
+            <p style="margin:0 0 0.4rem">Працівника фінансового відділу переконали провести переказ після відеодзвінка, де колеги були згенерованими дипфейками. Втрата близько 25 млн доларів [3].</p>
+            <p class="lesson" style="margin:0"><b>Урок:</b> довіру до каналу комунікації треба перевіряти окремо, це місток до теми довірених каналів.</p>
+          </div>
+        </div>
+        <div class="case">
+          <div class="case-name">Bybit<span>2025</span></div>
+          <div class="case-body">
+            <p style="margin:0 0 0.4rem">Атака почалася з компрометації робочого місця розробника постачальника, далі зловмисники отримали доступ до хмарної інфраструктури і підмінили код фронтенду. Один з найбільших відомих інцидентів у галузі [4].</p>
+            <p class="lesson" style="margin:0"><b>Урок:</b> ланцюг постачання і робоче місце розробника це теж периметр.</p>
+          </div>
+        </div>
+      </div>
+      <p class="ref" style="margin:1rem 0 0">Усі три розбираємо лише за публічними звітами. Нові технічні деталі не розкриваються.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="h2"><span class="num">6</span>Межі, етика, академічна доброчесність</h2>
+    <div class="callout">
+      <h3>Що гарантуємо</h3>
+      <ul>
+        <li><b>Оборонний фокус.</b> Мета навчити захищатися. Наступальні прийоми подаються лише в обсязі, потрібному, щоб зрозуміти і закрити ризик.</li>
+        <li><b>Тільки публічні джерела.</b> Кожен факт і кейс спирається на відкриту публікацію. Повний список у розділі 8.</li>
+        <li><b>Безпечне демо.</b> Ізольований тимчасовий акаунт, відкритий навчальний інструмент, без реальних цілей, з видаленням після заняття. Weaponizable інструкції не роздаються.</li>
+        <li><b>Без конфіденційного.</b> Жодної внутрішньої інформації роботодавців: ні архітектури, ні систем, ні процесів, ні порогів моніторингу AML. Факти про Capital One лише з публічних джерел, думки спікерів особисті.</li>
+        <li><b>Відповідність програмі.</b> Матеріал лягає на навчальні результати курсу з кібербезпеки: хмарна безпека, керування ідентичністю, аналіз інцидентів, комплаєнс.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="h2"><span class="num">7</span>Передумови і логістика</h2>
+    <div class="cols">
+      <div>
+        <h4 class="sign-label" style="margin:0 0 0.5rem">Для слухачів</h4>
+        <ul>
+          <li>Основи мереж: HTTP, DNS, IP-адресація.</li>
+          <li>Базове розуміння ОС і командного рядка.</li>
+          <li>Поняття про обліковий запис і права доступу (IAM).</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="sign-label" style="margin:0 0 0.5rem">Формат проведення</h4>
+        <ul>
+          <li>Онлайн у Zoom, демонстрація екрана.</li>
+          <li>Демо наживо через демонстрацію екрана, плюс заздалегідь записане відео як резерв.</li>
+          <li>60 хвилин і час на запитання.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="h2"><span class="num">8</span>Джерела</h2>
+    <ol class="reflist">
+      <li>Capital One закриває власні дата-центри і переходить на AWS. SiliconANGLE, 2020. <a href="https://siliconangle.com/2020/12/01/capital-one-closes-all-data-centers-to-rely-on-aws-on-demand-infrastructure-reinvent/">siliconangle.com</a></li>
+      <li>Mandiant: близько 165 клієнтів Snowflake у кампанії. Duo Decipher, 2024. <a href="https://duo.com/decipher/mandiant-165-snowflake-customers-potentially-exposed-in-wider-campaign">duo.com</a></li>
+      <li>Дипфейк-шахрайство проти Arup на 25 млн доларів. CNN / ABC17, 2024. <a href="https://abc17news.com/money/cnn-business-consumer/2024/05/16/british-engineering-giant-arup-revealed-as-25-million-deepfake-scam-victim/">abc17news.com</a></li>
+      <li>Технічний розбір атаки на Bybit. Elastic Security Labs, 2025. <a href="https://www.elastic.co/security-labs/bit-bybit">elastic.co/security-labs</a></li>
+      <li>CloudGoat, навчальний сценарій ec2_ssrf. Rhino Security Labs. <a href="https://rhinosecuritylabs.com/cloud-security/cloudgoat-aws-scenario-ec2_ssrf/">rhinosecuritylabs.com</a></li>
+      <li>FATF, міжнародні стандарти з протидії відмиванню коштів. <a href="https://www.fatf-gafi.org">fatf-gafi.org</a></li>
+      <li>FinCEN, матеріали з AML у США. <a href="https://www.fincen.gov">fincen.gov</a></li>
+      <li>flaws.cloud, навчальний майданчик з безпеки AWS. <a href="https://flaws.cloud">flaws.cloud</a></li>
+    </ol>
+  </section>
+
+  <p class="foot">Документ підготовлено для погодження лекції з науковим керівником. Усі зовнішні матеріали подано за публічними джерелами, перелік у розділі 8.</p>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var btn = document.getElementById('toggle');
+  var root = document.documentElement;
+  var KEY = 'plan-theme';
+  function sysDark() { return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; }
+  function current() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t;
+    return sysDark() ? 'dark' : 'light';
+  }
+  function label() { btn.textContent = current() === 'dark' ? 'світла' : 'темна'; }
+  try {
+    var saved = localStorage.getItem(KEY);
+    if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+  } catch (e) {}
+  label();
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+    label();
+  });
+})();
+</script>
+</body>
+</html>
