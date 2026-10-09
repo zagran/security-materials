@@ -243,6 +243,19 @@ section { margin-top: 2.6rem; }
 .callout h3 { margin-top: 0; }
 .callout ul { display: grid; gap: 0.45rem; }
 
+/* speakers */
+.speakers-doc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.sp-card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.75rem; break-inside: avoid; }
+.sp-name { font-family: var(--font-display); font-size: 1.18rem; font-weight: 600; letter-spacing: -0.015em; margin: 0; }
+.sp-latin { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); margin: 0.25rem 0 0; }
+.sp-role { font-size: 0.95rem; font-weight: 600; margin: 0.4rem 0 0; }
+.sp-bio { font-size: 0.93rem; margin: 0; }
+.sp-label { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.35rem; }
+.sp-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.sp-tags .tag--key { color: var(--accent); border-color: var(--accent); }
+.sp-leads { font-size: 0.93rem; margin: 0; }
+.sp-links { margin-top: auto; padding-top: 0.65rem; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 0.76rem; color: var(--muted); line-height: 1.7; word-break: break-word; }
+
 /* two-column lists */
 .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem 2rem; }
 .cols ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; }
@@ -293,7 +306,7 @@ section { margin-top: 2.6rem; }
   .doc-title { font-size: 1.7rem; }
   .meta { grid-template-columns: 1fr; gap: 0.2rem; }
   .meta dt { padding-top: 0.6rem; }
-  .cols, .signoff { grid-template-columns: 1fr; }
+  .cols, .signoff, .speakers-doc { grid-template-columns: 1fr; }
   .case { grid-template-columns: 1fr; gap: 0.2rem; }
   .case-name span { display: inline; margin-left: 0.4rem; }
 }
@@ -323,7 +336,7 @@ section { margin-top: 2.6rem; }
     <dl class="meta">
       <dt>Формат</dt><dd>Онлайн-лекція у Zoom з демонстрацією наживо. 60 хвилин, далі запитання.</dd>
       <dt>Аудиторія</dt><dd>Рівень вище середнього. Підійде старшокурсникам, магістрам і практикам. Передбачається знання основ мереж, ОС і поняття IAM.</dd>
-      <dt>Спікери</dt><dd>Сергій Заграничний (Senior Software Engineer, хмарні системи AML). Юрій Журов (Founder, SMB Cybersecurity Advisors).</dd>
+      <dt>Спікери</dt><dd>Двоє. Деталі в розділі 2.</dd>
     </dl>
   </header>
 
@@ -333,7 +346,59 @@ section { margin-top: 2.6rem; }
   </section>
 
   <section>
-    <h2 class="h2"><span class="num">2</span>Навчальні результати</h2>
+    <h2 class="h2"><span class="num">2</span>Спікери</h2>
+    <p class="lead">Лекцію проводять двоє практиків: один з боку хмарної інженерії у фінансах, другий з боку консалтингу з кібербезпеки для бізнесу.</p>
+    <div class="speakers-doc">
+
+      <article class="sp-card">
+        <div>
+          <h3 class="sp-name">Сергій Заграничний</h3>
+          <p class="sp-latin">Serhii Zahranychnyi · Вірджинія, США</p>
+          <p class="sp-role">Senior Software Engineer · Capital One</p>
+        </div>
+        <p class="sp-bio">Практикуючий інженер в одному з найбільших банків США. Будує хмарну інфраструктуру на AWS для систем Anti-Money Laundering (AML). Близько 15 років у розробці.</p>
+        <div>
+          <p class="sp-label">Кваліфікація</p>
+          <div class="sp-tags">
+            <span class="tag tag--key">IEEE Senior Member</span>
+            <span class="tag">AWS Solutions Architect (Associate)</span>
+            <span class="tag">RiskTech Security Champion</span>
+            <span class="tag">ACM Member</span>
+          </div>
+        </div>
+        <div>
+          <p class="sp-label">Публікації</p>
+          <p class="sp-bio">Рецензована стаття у журналі Expert (2026) і доповідь на DTAIC.</p>
+        </div>
+        <p class="sp-links"><a href="https://zagran.dev">zagran.dev</a> · <a href="https://medium.com/@zagran">Medium</a> · <a href="https://orcid.org/0009-0001-1867-0323">ORCID</a> · <a href="https://scholar.google.com/citations?user=L2xzV3cAAAAJ&amp;hl=en">Google Scholar</a></p>
+      </article>
+
+      <article class="sp-card">
+        <div>
+          <h3 class="sp-name">Юрій Журов</h3>
+          <p class="sp-latin">Iurii Zhurov · Флорида, США</p>
+          <p class="sp-role">Founder · SMB Cybersecurity Advisors</p>
+        </div>
+        <p class="sp-bio">Консультує малий і середній бізнес у США, допомагає керувати кібербезпекою як бізнес-ризиком, а не лише технічною проблемою. Понад 9 років незалежної практики, понад 20 років у технологіях.</p>
+        <div>
+          <p class="sp-label">Кваліфікація</p>
+          <div class="sp-tags">
+            <span class="tag tag--key">Магістр з кібербезпеки, НАУ</span>
+            <span class="tag">ACSP Member</span>
+          </div>
+        </div>
+        <div>
+          <p class="sp-label">Публікації і розробки</p>
+          <p class="sp-bio">Автор SMB Cybersecurity Framework. Дослідження з автентифікації, фішингу та соціальної інженерії. Доповіді на ITSec (2020, 2026) і конференції в Стамбулі (2026).</p>
+        </div>
+        <p class="sp-links"><a href="https://smbsecurityadvisors.com">smbsecurityadvisors.com</a> · <a href="https://orcid.org/0000-0002-8276-2230">ORCID</a> · <a href="https://scholar.google.com/citations?user=SPGvtcAAAAAJ">Google Scholar</a></p>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2 class="h2"><span class="num">3</span>Навчальні результати</h2>
     <p class="lead">Після лекції слухач зможе:</p>
     <ol class="outcomes">
       <li>Пояснити зсув периметра від мережі до ідентичності у хмарних фінансових системах і застосувати модель спільної відповідальності.</li>
@@ -345,7 +410,7 @@ section { margin-top: 2.6rem; }
   </section>
 
   <section>
-    <h2 class="h2"><span class="num">3</span>Поблоковий план</h2>
+    <h2 class="h2"><span class="num">4</span>Поблоковий план</h2>
 
     <article class="block">
       <div class="block-head">
@@ -411,7 +476,7 @@ section { margin-top: 2.6rem; }
         <ul>
           <li>Навчальний стенд CloudGoat в окремому тимчасовому AWS-акаунті [5].</li>
           <li>Показ ланцюга на концептуальному рівні, далі його усунення (IMDSv2, найменші привілеї, policy-as-code).</li>
-          <li>Повторний запуск підтверджує, що шлях закрито. Деталі в розділі 4.</li>
+          <li>Повторний запуск підтверджує, що шлях закрито. Деталі в розділі 5.</li>
         </ul>
         <p class="result"><b>Результат</b>Слухач бачить причину, наслідок і конкретне виправлення на одному прикладі.</p>
       </div>
@@ -464,7 +529,7 @@ section { margin-top: 2.6rem; }
   </section>
 
   <section>
-    <h2 class="h2"><span class="num">4</span>Деталізація демонстрації</h2>
+    <h2 class="h2"><span class="num">5</span>Деталізація демонстрації</h2>
     <div class="detail">
       <h3>Причинно-наслідковий ланцюг на навчальному стенді</h3>
       <p>Демонстрація показує механізм на навмисно вразливому навчальному середовищі, а не атаку на реальну систему. Стенд розгортається з відкритого навчального проєкту CloudGoat (Rhino Security Labs) в окремому тимчасовому AWS-акаунті, ізольованому від будь-яких робочих систем, і повністю видаляється одразу після заняття.</p>
@@ -490,7 +555,7 @@ section { margin-top: 2.6rem; }
   </section>
 
   <section>
-    <h2 class="h2"><span class="num">5</span>Кейси: що саме розбираємо</h2>
+    <h2 class="h2"><span class="num">6</span>Кейси: що саме розбираємо</h2>
     <div class="detail">
       <div class="cases">
         <div class="case">
@@ -520,12 +585,12 @@ section { margin-top: 2.6rem; }
   </section>
 
   <section>
-    <h2 class="h2"><span class="num">6</span>Межі, етика, академічна доброчесність</h2>
+    <h2 class="h2"><span class="num">7</span>Межі, етика, академічна доброчесність</h2>
     <div class="callout">
       <h3>Що гарантуємо</h3>
       <ul>
         <li><b>Оборонний фокус.</b> Мета навчити захищатися. Наступальні прийоми подаються лише в обсязі, потрібному, щоб зрозуміти і закрити ризик.</li>
-        <li><b>Тільки публічні джерела.</b> Кожен факт і кейс спирається на відкриту публікацію. Повний список у розділі 8.</li>
+        <li><b>Тільки публічні джерела.</b> Кожен факт і кейс спирається на відкриту публікацію. Повний список у розділі 9.</li>
         <li><b>Безпечне демо.</b> Ізольований тимчасовий акаунт, відкритий навчальний інструмент, без реальних цілей, з видаленням після заняття. Weaponizable інструкції не роздаються.</li>
         <li><b>Без конфіденційного.</b> Жодної внутрішньої інформації роботодавців: ні архітектури, ні систем, ні процесів, ні порогів моніторингу AML. Факти про Capital One лише з публічних джерел, думки спікерів особисті.</li>
         <li><b>Відповідність програмі.</b> Матеріал лягає на навчальні результати курсу з кібербезпеки: хмарна безпека, керування ідентичністю, аналіз інцидентів, комплаєнс.</li>
@@ -534,7 +599,7 @@ section { margin-top: 2.6rem; }
   </section>
 
   <section>
-    <h2 class="h2"><span class="num">7</span>Передумови і логістика</h2>
+    <h2 class="h2"><span class="num">8</span>Передумови і логістика</h2>
     <div class="cols">
       <div>
         <h4 class="sign-label" style="margin:0 0 0.5rem">Для слухачів</h4>
@@ -556,7 +621,7 @@ section { margin-top: 2.6rem; }
   </section>
 
   <section>
-    <h2 class="h2"><span class="num">8</span>Джерела</h2>
+    <h2 class="h2"><span class="num">9</span>Джерела</h2>
     <ol class="reflist">
       <li>Capital One закриває власні дата-центри і переходить на AWS. SiliconANGLE, 2020. <a href="https://siliconangle.com/2020/12/01/capital-one-closes-all-data-centers-to-rely-on-aws-on-demand-infrastructure-reinvent/">siliconangle.com</a></li>
       <li>Mandiant: близько 165 клієнтів Snowflake у кампанії. Duo Decipher, 2024. <a href="https://duo.com/decipher/mandiant-165-snowflake-customers-potentially-exposed-in-wider-campaign">duo.com</a></li>
@@ -569,7 +634,7 @@ section { margin-top: 2.6rem; }
     </ol>
   </section>
 
-  <p class="foot">Документ підготовлено для погодження лекції з науковим керівником. Усі зовнішні матеріали подано за публічними джерелами, перелік у розділі 8.</p>
+  <p class="foot">Документ підготовлено для погодження лекції з науковим керівником. Усі зовнішні матеріали подано за публічними джерелами, перелік у розділі 9.</p>
 
 </div>
 
